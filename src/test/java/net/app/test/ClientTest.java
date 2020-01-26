@@ -10,7 +10,7 @@ import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import junit.framework.Assert;
 import net.app.rest.domain.Item;
