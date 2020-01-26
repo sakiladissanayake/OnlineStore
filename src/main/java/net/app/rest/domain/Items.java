@@ -7,9 +7,12 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="items")
+@XmlRootElement(name = "items")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Items {
+	/**
+	 * Item list
+	 */
 	@XmlElement
 	private List<Item> item;
 
@@ -20,6 +23,5 @@ public class Items {
 	public void setItem(List<Item> item) {
 		this.item = item;
 	}
-	
-	
+
 }

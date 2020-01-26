@@ -5,18 +5,27 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="item")
+@XmlRootElement(name = "item")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Item {
 
+	/**
+	 * Item id
+	 */
 	@XmlElement
-    private Integer id;
-	
+	private Integer id;
+
+	/**
+	 * Cartons
+	 */
 	@XmlElement
-    private Integer cartons;
-	
+	private Integer cartons;
+
+	/**
+	 * Units
+	 */
 	@XmlElement
-    private Integer units;
+	private Integer units;
 
 	public Integer getId() {
 		return id;
@@ -41,6 +50,5 @@ public class Item {
 	public void setUnits(Integer units) {
 		this.units = units;
 	}
-	
-	
+
 }

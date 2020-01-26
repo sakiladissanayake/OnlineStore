@@ -7,10 +7,13 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="pricelist")
+@XmlRootElement(name = "pricelist")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class PriceList {
-	
+
+	/**
+	 * List of price
+	 */
 	@XmlElement
 	private List<Price> price;
 
@@ -21,6 +24,5 @@ public class PriceList {
 	public void setPrice(List<Price> price) {
 		this.price = price;
 	}
-	
-	
+
 }

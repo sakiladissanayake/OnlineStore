@@ -5,18 +5,27 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@XmlRootElement(name="price")
+@XmlRootElement(name = "price")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Price {
-	
+
+	/**
+	 * Item id
+	 */
 	@XmlElement
-    private Integer itemid;
-	
+	private Integer itemid;
+
+	/**
+	 * Item name
+	 */
 	@XmlElement
-    private String name;
-	
+	private String name;
+
+	/**
+	 * Total price
+	 */
 	@XmlElement
-    private Double price;
+	private Double price;
 
 	public Integer getItemid() {
 		return itemid;
@@ -41,7 +50,5 @@ public class Price {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
 
 }

@@ -10,19 +10,23 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
-
 @XmlRootElement(name = "products")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Products {
-	
+
 	@XmlAttribute
 	private Integer size;
-	
+
+	/**
+	 * Link
+	 */
 	@XmlJavaTypeAdapter(Link.JaxbAdapter.class)
 	@XmlElement
 	private Link link;
-	
+
+	/**
+	 * List of products
+	 */
 	@XmlElement
 	private List<Product> products;
 
