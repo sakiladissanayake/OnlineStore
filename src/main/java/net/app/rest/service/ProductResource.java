@@ -1,5 +1,6 @@
 package net.app.rest.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
@@ -17,6 +18,10 @@ import javax.ws.rs.core.UriBuilder;
 import javax.ws.rs.core.UriInfo;
 
 import net.app.dao.ProductDB;
+import net.app.rest.domain.Item;
+import net.app.rest.domain.Items;
+import net.app.rest.domain.Price;
+import net.app.rest.domain.PriceList;
 import net.app.rest.domain.Product;
 import net.app.rest.domain.Products;
 import net.app.rest.domain.commom.Message;
@@ -145,9 +150,37 @@ public class ProductResource {
         ProductDB.removeProduct(id);
         return Response.status(javax.ws.rs.core.Response.Status.OK).entity(new Message("Product Deleted Successfully")).build();
     }
+    
+    
+    @POST
+    @Path("/calculatePrice")
+    @Consumes("application/xml")
+    public PriceList calculatePrice(Items items){
+    	
+    	PriceList finalPriceList = new PriceList();
+    	List<Price> priceList = new ArrayList<>();
+    	
+    	for (Item item : items.getItem()) {
+    		Price price = new Price();
+			
+    		if(item.getId()!= null &&  ProductDB.getProduct(item.getId()) != null) {
+				Double totalPrice = ProductDB.calculatePrice(item);
+				price.setItemid(item.getId());
+				price.setName(ProductDB.getProduct(item.getId()).getName());
+				price.setPrice(totalPrice);
+				priceList.add(price);
+			}
+		}
+    	
+    	finalPriceList.setPrice(priceList);
+    	return finalPriceList;
+    	
+       }
+    
+    
       
     /**
-     * Initialize the application with these two default configurations
+     * Initialize the application with these two default products
      * */
     static {
         ProductDB.createProduct("Penguin-ears", 20, 175.00, Status.ACTIVE);
