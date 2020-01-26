@@ -103,16 +103,11 @@ public class ProductResource {
 					.entity(new Message("Product price not found")).build();
 		}
 
-		Integer id = ProductDB.createProduct(product.getName(), product.getUnitspercarton(), product.getPrice(),
+		ProductDB.createProduct(product.getName(), product.getUnitspercarton(), product.getPrice(),
 				product.getStatus());
-		if (id == 1) {
-			return Response.status(javax.ws.rs.core.Response.Status.CREATED)
-					.entity(new Message("Product Added Successfully")).build();
-		} else {
-			return Response.status(javax.ws.rs.core.Response.Status.EXPECTATION_FAILED)
-					.entity(new Message("Product Added Failed")).build();
-		}
 
+		return Response.status(javax.ws.rs.core.Response.Status.CREATED)
+				.entity(new Message("Product Added Successfully")).build();
 	}
 
 	/**
